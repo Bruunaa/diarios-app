@@ -56,14 +56,12 @@
           matInput
           placeholder="Confirmar senha"
           formControlName="confirma_senha"
-          type="password"
-        />
+          type="password"/>
         <mat-icon matPrefix>key</mat-icon>
       </mat-form-field>
       <span
         class="mat-error"
-        *ngIf="signupForm.errors?.['matchPasswords'] && signupForm.get('confirma_senha')?.touched"
-      >
+        *ngIf="signupForm.errors?.['matchPasswords'] && signupForm.get('confirma_senha')?.touched">
         As senhas não correspondem
       </span>
       <button mat-raised-button color="primary" [disabled]="signupForm.invalid">

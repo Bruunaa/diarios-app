@@ -1,11 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from './components/loader/loader.component';
+import { MaterialModule } from './material.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    // recurso que fazem parte do módulo (componentes. diretivas...)
+    LoaderComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+  ],
+  exports: [
+    LoaderComponent
   ]
 })
 export class SharedModule { }
