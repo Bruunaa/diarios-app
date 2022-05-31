@@ -6,10 +6,22 @@ import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-
 import { UsuarioNaoVerificadoComponent } from './components/usuario-nao-verificado/usuario-nao-verificado.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'cadastro', component: CadastroComponent },
-  { path: 'recuperar-senha', component: RecuperarSenhaComponent },
-  { path: 'confirmar-email', component: UsuarioNaoVerificadoComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'cadastro',
+    component: CadastroComponent,
+  },
+  {
+    path: 'recuperar-senha',
+    component: RecuperarSenhaComponent,
+  },
+  {
+    path: 'confirmar-email',
+    component: UsuarioNaoVerificadoComponent,
+  },
 ];
 
 @NgModule({
@@ -17,4 +29,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AuthRoutingModule { }
+export class AuthRoutingModule {}

@@ -1,7 +1,11 @@
-import { DocumentSnapshot } from "@angular/fire/firestore";
+import { DocumentSnapshot } from '@angular/fire/firestore';
 
-// modelo para criar interface de conversão
+// Processamento antes e depois do firestore
+// Usar apenas em situações específicas
+// Ex: FirestoreDate -> Date
 export interface Converter<T> {
-    toFirestore(data: T): any;  //conversão antes de enviar para o firestore
-    fromFirestore(snapshot: DocumentSnapshot, options: any): T; // conversão quando recebe o firestores 
+  // conversão antes de enviar para o firestore
+  toFirestore(data: T): any;
+  // conversão quando recebe do firestore
+  fromFirestore(snapshot: DocumentSnapshot, options: any): T;
 }

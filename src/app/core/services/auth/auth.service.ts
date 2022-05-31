@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Auth, authState } from '@angular/fire/auth';
-import { doc, Firestore } from '@angular/fire/firestore';
+import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { 
+import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
+  User,
 } from '@firebase/auth';
-import { collection, setDoc } from '@firebase/firestore';
-import { from, tap } from 'rxjs';
+import { collection, setDoc, updateDoc } from '@firebase/firestore';
+import { first, from, Observable, tap } from 'rxjs';
 
 // Firebase Versão Modular
 @Injectable({
@@ -35,6 +36,13 @@ export class AuthService {
         this.uid = user?.uid;
       })
     );
+  }
+
+  get userData() {
+    // Referencia o documento do usuário logado
+    const userDoc = doc(this.usuarios, this.uid);
+    // "Pega" apenas a primeira amostra de dados e encerra o observable
+    return docData(userDoc).pipe(first());
   }
 
   usuarios = collection(this.db, 'usuarios'); // referencia possível coleção
@@ -117,8 +125,4 @@ export class AuthService {
     // com base no email do parâmetro envia um email para o usuário redefinir/resetar a senha
     return from(sendPasswordResetEmail(this.auth, email));
   }
-
-  /** TODO
-   * - VERIFICAR EMAIL
-   */
 }
